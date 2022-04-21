@@ -1,0 +1,41 @@
+Ctrl + Shift + T for finding a class even from a JAR file
+Ctrl + Shift + R for finding any resource (file) including config xml files
+Ctrl + 1 for quick fix
+Ctrl + Shift + o for organize imports
+Ctrl + o for quick outline going quickly to a method
+Alt + right and Alt + left for going back and forth while editing.
+Alt + Shift + W  to show a class in package explorer
+Ctrl + Shift + Up and down for navigating from member to member (variables and methods)
+Ctrl + k and Ctrl + Shift +K for find next/previous
+Go to a type declaration: F3, This Eclipse shortcut is very useful to see function definition very quickly.
+
+
+Ctrl + / for commenting, uncommenting lines and blocks.
+Ctrl + Shift + / for commenting, uncommenting lines with block comment.
+Selecting class and pressing F4 to see its Type hierarchy
+Ctrl + F4 or Ctrl + w for closing current file
+Ctrl+Shirt+W for closing all files.
+Ctrl + l go to line
+Select text and press Ctrl + Shift + F for formatting.
+Ctrl + F for find, find/replace
+Ctrl + D to delete a line
+Ctrl + Q for going to last edited place
+
+
+Ctrl + T for toggling between supertype and subtype
+Go to other open editors: Ctrl + E.
+Move to one problem (i.e.: error, warning) to the next (or previous) in a file: Ctrl +. For next, and Ctrl +, for the previous problem
+Hop back and forth through the files you have visited: Alt + ← and Alt + →, respectively.
+CTRL+Shift+G, which searches the workspace for references to the selected method or variable
+Ctrl+Shift+L to view the listing for all Eclipse keyboard shortcuts.
+Alt + Shift + j to add Javadoc at any place in Java source file.
+CTRL+SHIFT+P to find closing brace. Place the cursor at the opening brace and use this.
+Alt+Shift+X, Q to run Ant build file using keyboard shortcuts in Eclipse.
+Ctrl + Shift +F for Autoformatting.
+
+sysout + ctrl +spacebar for System.out.println();
+main + ctrl + spacebar for public static void main(String[] args){ }
+
+
+
+
