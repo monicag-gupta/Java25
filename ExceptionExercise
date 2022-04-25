@@ -1,0 +1,115 @@
+import java.util.*;
+
+class InvalidAgeException extends Exception {
+	InvalidAgeException(String s) {
+		super(s);
+	}
+}
+
+class DuplicateNameException extends Exception {
+	DuplicateNameException(String s) {
+		super(s);
+	}
+}
+
+public class ExerciseEmp {
+	static boolean validate(int age) throws InvalidAgeException {
+		if (age < 0)
+			throw new InvalidAgeException("Ghosts are not allowed as Employees");
+		else if (age < 18)
+			throw new InvalidAgeException("Children are not allowed as Employees");
+		else if (age > 100)
+			throw new InvalidAgeException("Purvaj are not allowed as Employees");
+		else if (age > 60)
+			throw new InvalidAgeException("Seniors are not allowed as Employees");
+		else
+			return true;
+
+	}
+
+	static boolean validateName(String name, List<Employee> emps) throws DuplicateNameException {
+		for (Employee e : emps) {
+			if (e.getName().equals(name)) {
+				throw new DuplicateNameException("Duplicate names are not allowed as Employees");
+			}
+		}
+		return true;
+	}
+
+	public static void main(String args[]) {
+
+		Scanner sc = new Scanner(System.in);
+		String ch, name;
+		int age;
+		Employee e = new Employee();
+		List<Employee> emps = new ArrayList<>();
+		while (true) {
+			System.out.println("Menu: \n1. Enter Emp\n2. List\n3.Exit");
+			ch = sc.nextLine();
+			if (ch.equals("2")) {
+				System.out.println(emps);
+			}
+			else if (ch.equals("1")) {
+				System.out.println("Enter the Employee Name:");
+				name = sc.nextLine();
+
+				try {
+					if (validateName(name, emps)) {
+						System.out.println("Enter the Employee Age:");
+						age = sc.nextInt();
+						sc.nextLine();
+						if (validate(age)) {
+							emps.add(new Employee(age, name));
+						}
+
+					}
+				} catch (Exception e1) {
+					System.out.println(e1);
+
+				}
+			}
+			else if(ch.equals("3"))
+			{
+				System.out.println("break");
+				break;
+			}
+			else
+				System.out.println("Incorrect choice");
+		}
+	}
+}
+
+class Employee {
+	int age;
+	String name;
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int sal) {
+		age = sal;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [Age=" + age + ", name=" + name + "]";
+	}
+
+	public Employee(int sal, String name) {
+		super();
+		age = sal;
+		this.name = name;
+	}
+
+	public Employee() {
+	}
+}
