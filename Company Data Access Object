@@ -1,0 +1,81 @@
+import java.sql.*;
+import java.util.*;
+public class CompanyDAO {
+	Connection c=null;
+	Statement stmt=null;
+	String sql;
+	 
+	void fn()
+	{
+		try {
+			Class.forName("org.postgresql.Driver");
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/javadb", "postgres", "postgres");
+			c.setAutoCommit(false);
+			System.out.println("Opened database successfully");
+			stmt = c.createStatement();
+
+		} catch (Exception e) {
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+		}
+	}
+	
+	public void save(Company cc) {
+		try {
+		fn();
+		sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "
+				+ "VALUES ("+ cc.getId() + ", '" + 
+				cc.getName() + "', " + cc.getAge() + ", '" + 
+				cc.getAddress()+ "', " + cc.getSalary() + ");";
+		stmt.executeUpdate(sql);
+		stmt.close();
+		c.commit();
+		}catch(Exception e) {}
+		
+	}
+	public void update(Company cc) {
+		try {
+		fn();
+		sql = "UPDATE COMPANY set "
+				+ "id = "+ cc.getId() + ", name='" + 
+				cc.getName() + "', age=" + cc.getAge() + ", address='" + 
+				cc.getAddress()+ "', salary =  " + cc.getSalary() 
+						+ "where ID=" + cc.getId() + ";";
+		stmt.executeUpdate(sql);
+		stmt.close();
+		c.commit();
+		}catch(Exception e) {}
+		
+	}
+	public void delete(Company cc) {
+		try {
+		fn();
+		sql = "delete from company where ID=" + cc.getId() + ";";
+		stmt.executeUpdate(sql);
+		stmt.close();
+		c.commit();
+		}catch(Exception e) {}
+		
+	}
+	public List<Company> CompanyList() {
+		List<Company> companies = new ArrayList<Company>();
+		try {
+		fn();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM COMPANY;");
+		while (rs.next()) {
+			companies.add(new Company(rs.getInt("id"), rs.getString("name"),
+					rs.getInt("age"), rs.getString("address"), rs.getFloat("salary")));
+		}
+		rs.close();
+		stmt.close();
+		}catch(Exception e) {}
+		return companies;
+	}
+	
+	 
+	 
+	
+	
+	
+
+}
